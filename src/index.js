@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import Provider from './store';
 
 const render = () => {
   const Main = require('containers').default;
 
   ReactDOM.render(
     <AppContainer>
-      <Main />
+      <Provider>
+        <Main />
+      </Provider>
     </AppContainer>,
     document.getElementById('app')
   );

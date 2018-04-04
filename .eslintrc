@@ -24,6 +24,7 @@
     "react/sort-comp": 0,
     "indent": 0,
     "quotes": 0,
+    "react/no-multi-comp": 0,
     "comma-dangle": [
       "off"
     ],
@@ -71,7 +72,8 @@
           "redux_flow/",
           "static/",
           "theme/",
-          "utils/"
+          "utils/",
+          "store"
         ]
       }
     ],

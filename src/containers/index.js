@@ -1,12 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
-export default class Main extends Component {
-  render() {
-    return (
-      <div style={{ textAlign: 'center' }}>
-        <h2>Hello, I`m ReactMaker.</h2>
-        <p>To get started, edit containers/index.js</p>
-      </div>
-    );
-  }
-}
+import Home from './Home/Home';
+import Page2 from './Page2/Page2';
+
+// <Link to="/" style={{ marginRight: '30px' }}>Home</Link>
+// <Link to="/page2">Page2</Link>
+
+export default () => (
+  <Router>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/page2" component={Page2} />
+    </Switch>
+  </Router>
+);
