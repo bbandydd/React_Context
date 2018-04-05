@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 import Home from './Home/Home';
 import Page2 from './Page2/Page2';
@@ -9,9 +9,15 @@ import Page2 from './Page2/Page2';
 
 export default () => (
   <Router>
-    <Switch>
+    <div>
+      <Route exact path="/">
+        <Link style={{marginRight: '30px'}} to="/">Home</Link>
+      </Route>
+      <Route path="/page2">
+        <Link to="/page2">Page2</Link>
+      </Route>
       <Route exact path="/" component={Home} />
       <Route path="/page2" component={Page2} />
-    </Switch>
+    </div>
   </Router>
 );
