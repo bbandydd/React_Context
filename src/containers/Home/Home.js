@@ -4,14 +4,14 @@ import { Consumer } from 'store';
 @Consumer
 export default class Main extends Component {
   render() {
-    const { context } = this.props;
+    const { countStore } = this.props.context;
 
     return (
       <Fragment>
         <p>This is Home Page</p>
-        <p>{context.count}</p>
-        <button onClick={context.increment}>+++</button>
-        <button onClick={context.decrement}>---</button>
+        <p>{countStore.count}</p>
+        <button onClick={countStore.increment}>+++</button>
+        <button onClick={countStore.decrement}>---</button>
       </Fragment>
     );
   }

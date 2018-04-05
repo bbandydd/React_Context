@@ -6,21 +6,33 @@ export default class Provider extends Component {
   constructor() {
     super();
     this.state = {
-      count: 1,
-      increment: this.increment,
-      decrement: this.decrement,
+      countStore: {
+        count: 1,
+        increment: this.increment,
+        decrement: this.decrement,
+      }
     };
   }
 
   increment = () => {
+    const { countStore } = this.state;
+
     this.setState({
-      count: this.state.count + 1
+      countStore: {
+        ...countStore,
+        count: countStore.count + 1
+      }
     });
   }
 
   decrement = () => {
+    const { countStore } = this.state;
+
     this.setState({
-      count: this.state.count - 1
+      countStore: {
+        ...countStore,
+        count: countStore.count - 1
+      }
     });
   }
 
