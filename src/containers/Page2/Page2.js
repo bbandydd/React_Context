@@ -1,17 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { Consumer } from 'store';
 
-@Consumer
+@Consumer()
 export default class Page2 extends Component {
   render() {
-    const { countStore } = this.props.context;
+    const { countStore, userStore } = this.props.context;
 
     return (
       <Fragment>
         <p>This is Page2</p>
+        <p>Hello I`m {userStore.name}</p>
         <p>{countStore.count}</p>
-        <button onClick={countStore.increment}>+++</button>
-        <button onClick={countStore.decrement}>---</button>
       </Fragment>
     );
   }

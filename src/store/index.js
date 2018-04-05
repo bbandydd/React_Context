@@ -10,7 +10,10 @@ export default class Provider extends Component {
         count: 1,
         increment: this.increment,
         decrement: this.decrement,
-      }
+      },
+      userStore: {
+        name: 'Andy'
+      },
     };
   }
 
@@ -45,12 +48,22 @@ export default class Provider extends Component {
   }
 }
 
-export const Consumer = (ComposedComponent) => {
+export const Consumer = (...stores) => (ComposedComponent) => {
   class ConsumerComponent extends Component {
     render() {
       return (
         <myContext.Consumer>
-          { context => <ComposedComponent context={context} /> }
+          { (context) => {
+            if (stores.length === 0) return <ComposedComponent context={context} />;
+
+            const newContext = Object.keys(context).reduce((acc, key) => {
+              if (stores.includes(key)) return {...acc, [key]: context[key]};
+                return acc;
+            }, {});
+
+            return <ComposedComponent context={newContext} />;
+           }
+          }
         </myContext.Consumer>
       );
     }

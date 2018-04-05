@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Consumer } from 'store';
 
-@Consumer
+@Consumer('countStore')
 export default class Main extends Component {
   render() {
     const { countStore } = this.props.context;
