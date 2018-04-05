@@ -38,9 +38,7 @@ export const Consumer = (ComposedComponent) => {
     render() {
       return (
         <myContext.Consumer>
-          {
-            context => <ComposedComponent context={context} />
-          }
+          { context => <ComposedComponent context={context} /> }
         </myContext.Consumer>
       );
     }
