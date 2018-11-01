@@ -50,21 +50,18 @@ export default class Provider extends Component {
 
 export const Consumer = (...stores) => (ComposedComponent) => {
   class ConsumerComponent extends Component {
+    static contextType = myContext;
+
     render() {
+      if (stores.length === 0) return <ComposedComponent context={this.context} />;
+
+      const newContext = Object.keys(this.context).reduce((acc, key) => {
+        if (stores.includes(key)) return {...acc, [key]: this.context[key]};
+          return acc;
+      }, {});
+
       return (
-        <myContext.Consumer>
-          { (context) => {
-            if (stores.length === 0) return <ComposedComponent context={context} />;
-
-            const newContext = Object.keys(context).reduce((acc, key) => {
-              if (stores.includes(key)) return {...acc, [key]: context[key]};
-                return acc;
-            }, {});
-
-            return <ComposedComponent context={newContext} />;
-           }
-          }
-        </myContext.Consumer>
+        <ComposedComponent context={newContext} />
       );
     }
   }
