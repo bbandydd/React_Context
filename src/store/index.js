@@ -53,7 +53,7 @@ export const Consumer = (...stores) => (ComposedComponent) => {
     static contextType = myContext;
 
     render() {
-      if (stores.length === 0) return <ComposedComponent context={this.context} />;
+      if (stores.length === 0) return <ComposedComponent {...this.props} context={this.context} />;
 
       const newContext = Object.keys(this.context).reduce((acc, key) => {
         if (stores.includes(key)) return {...acc, [key]: this.context[key]};
@@ -61,7 +61,7 @@ export const Consumer = (...stores) => (ComposedComponent) => {
       }, {});
 
       return (
-        <ComposedComponent context={newContext} />
+        <ComposedComponent {...this.props} context={newContext} />
       );
     }
   }
